@@ -5,32 +5,31 @@
 * Sxy_046_Check.c main函数
 ## 说明
 ### 实现内容
-1. 利用人体红外感应模块检测人体，并通过指示灯指示。
-2. 用另一个LED灯代替楼道灯，当人体接近时开启楼道灯。
-3. 当人体离开后，楼道灯延时熄灭，延时时间可通过按键设备
-4. 延时时间实时倒数显示，单位为秒。
-5. 增加声音感应功能。
-6. 白天不感应。
+* 利用人体红外感应模块检测人体，并通过指示灯指示。
+* 用另一个LED灯代替楼道灯，当人体接近时开启楼道灯。
+* 当人体离开后，楼道灯延时熄灭，延时时间可通过按键设备
+* 实时倒数显示，单位为秒。
+* 增加声音感应功能。
+* 白天不感应。
 ## 总体设计方案
 ![image](https://github.com/AcidFish12/A-human-checker-based-on-51MCU/assets/75008732/e6adf254-7bfe-4c08-bc57-46005dc7351b)
 本系统由单片机开发板、光线感应模块、声音感应模块和人体感应模块组成。其中用到单片机开发板上的按键模块、LED灯模块和LCD显示模块。通过光线感应模块判断是白天还是黑夜，若为黑夜则进入工作状态。默认工作状态时候，此时可以通过按键设置倒计时的时长。当声音和人体感应模块触发，代表路灯的灯亮起，人离开后，LCD屏幕显示倒计时，倒计时结束后回到默认工作状态。
 ## 硬件
-1. LCD1602
+* LCD1602
 ![image](https://github.com/AcidFish12/A-human-checker-based-on-51MCU/assets/75008732/054f6587-c993-4354-8019-f2fb47cee443)
-2. LED模块和案件模块
+* LED模块和案件模块
 ![image](https://github.com/AcidFish12/A-human-checker-based-on-51MCU/assets/75008732/a33860df-fcc6-4d85-ae14-860a390e87c4)
 ![image](https://github.com/AcidFish12/A-human-checker-based-on-51MCU/assets/75008732/466b3222-d63b-4759-a60c-5ed14cfc1fa9)
-3. 人体感应模块
+* 人体感应模块
 人体感应模块可以实现全自动感应：人进入其感应范围则输入高电平，人离开感应范围则自动延时关闭高电平，输出低电平。
 它又有两种触发模式：
 i.	不可重复触发方式：即感应输出高电平后，延时时间段已结束，输出将自动从高电平变成低电平；
 ii.	可重复触发方式：即感应输出高电平后，在延时时间段内，如果有人体在其感应范围活动，其输出一直保持高电平，直到人离开后才演示将高电平变为低电平。
 
 ![image](https://github.com/AcidFish12/A-human-checker-based-on-51MCU/assets/75008732/0dab00a4-03dd-496f-9051-163105a04717)
-4. 光敏电阻模块
+* 光敏电阻模块
 ![image](https://github.com/AcidFish12/A-human-checker-based-on-51MCU/assets/75008732/554a46c9-ef68-434d-bedf-1359b7c0c38d)
-光敏电阻模块，当有光线时输出低电平，无光线时输出高电平。将输出脚连接P3.2INT0口请求外部中断。
-5. 声音检测模块
+光敏电阻模块，当有光线时输出低电平，无光线时输出高电平。将输出脚连接P3.2INT0口请求外部中断。 声音检测模块
 ![image](https://github.com/AcidFish12/A-human-checker-based-on-51MCU/assets/75008732/7b1a2931-cc25-400b-84a3-f5f6d5467f4a)
 ## 软件
 1. 框图
